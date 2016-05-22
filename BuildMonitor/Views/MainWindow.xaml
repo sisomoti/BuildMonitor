@@ -38,15 +38,14 @@
             <ColumnDefinition Width="260"/>
             <ColumnDefinition Width="270"/>
         </Grid.ColumnDefinitions>
-        
-        <TextBox x:Name="textBox" Margin="20,10,0,0" TextWrapping="Wrap"
-                 HorizontalAlignment="Left" Height="40" VerticalAlignment="Top" Width="760"
-                 FontFamily="Meiryo UI" FontSize="29.333" BorderThickness="2"
-                 Text="{Binding ExampleMessage}" Grid.ColumnSpan="3" />
+
+        <TextBlock x:Name="text_Pending" Text="ビルド待ち" TextAlignment="Center" HorizontalAlignment="Left" Margin="20,18,0,0" VerticalAlignment="Top" Width="240" Grid.Column="0" FontFamily="Meiryo" FontSize="22" FontWeight="ExtraBold"/>
+        <TextBlock x:Name="text_Building" Text="ビルド中" TextAlignment="Center" HorizontalAlignment="Left" Margin="10,18,0,0" VerticalAlignment="Top" Width="240" Grid.Column="1" FontFamily="Meiryo" FontSize="22" FontWeight="ExtraBold"/>
+        <TextBlock x:Name="text_Failure" Text="ビルドエラー" TextAlignment="Center" HorizontalAlignment="Left" Margin="10,18,0,0" VerticalAlignment="Top" Width="240" Grid.Column="2" FontFamily="Meiryo" FontSize="22" FontWeight="ExtraBold"/>
 
         <ListBox x:Name="listBox_Pending" Height="490" Width="240" Margin="20,59,0,0"
                   HorizontalAlignment="Left" VerticalAlignment="Top"
-                  ItemsSource="{Binding PendingCommits}" Background="#FFC5C5C5" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ScrollViewer.VerticalScrollBarVisibility="Disabled" />
+                  ItemsSource="{Binding PendingCommits}" Background="#FFC5C5C5" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ScrollViewer.VerticalScrollBarVisibility="Disabled" Grid.Column="0"/>
 
         <ListBox x:Name="listBox_Building" Height="490" Width="240" Margin="10,59,0,0"
                   HorizontalAlignment="Left" VerticalAlignment="Top"
@@ -54,7 +53,7 @@
 
         <ListBox x:Name="listBox_Failed" Height="490" Width="240" Margin="10,59,0,0"
                   HorizontalAlignment="Left" VerticalAlignment="Top"
-                  ItemsSource="{Binding FailedCommits}" Background="#FFFF8A8A" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ScrollViewer.VerticalScrollBarVisibility="Disabled" Grid.Column="2" />
+                  ItemsSource="{Binding FailureCommits}" Background="#FFFF8A8A" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ScrollViewer.VerticalScrollBarVisibility="Disabled" Grid.Column="2" />
 
     </Grid>
 </Window>

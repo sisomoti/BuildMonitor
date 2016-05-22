@@ -74,7 +74,10 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Models\BuildResult.cs" />
+    <Compile Include="Models\RevisionList.cs" />
     <Compile Include="Models\ExampleModel.cs" />
+    <Compile Include="Models\Revision.cs" />
     <Compile Include="ViewModels\MainWindowViewModel.cs" />
     <Compile Include="Views\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>

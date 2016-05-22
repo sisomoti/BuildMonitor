@@ -66,20 +66,17 @@ namespace BuildMonitor.ViewModels
             model = new ExampleModel("Hello, world."); ;
             ExampleMessage = model.Text;
 
-            allCommits = new List<string>();
-            allCommits.Add("バグを修正しました");
-            allCommits.Add("機能Aを実装");
-            allCommits.Add("hoge" + Environment.NewLine + "fuga" + Environment.NewLine + "piyo");
-            allCommits.Add("ほげほげふがふがほげほげふがふがほげほげふがふが長いコミットメッセージほげほげふがふがほげほげふがふがほげほげふがふが");
+            RevisionList revisions = new RevisionList();
 
-            // ListBox
-            PendingCommits  = new ListCollectionView(allCommits);
-            BuildingCommits = new ListCollectionView(allCommits);
-            FailedCommits   = new ListCollectionView(allCommits);
+            allCommits = revisions.GetAllCommentList();
+
+            PendingCommits = new ListCollectionView(revisions.GetPendingCommentList());
+            BuildingCommits = new ListCollectionView(revisions.GetBuildingCommentList());
+            FailureCommits   = new ListCollectionView(revisions.GetFailureCommentList());
 
             PendingCommits.MoveCurrentToPosition(-1);
             BuildingCommits.MoveCurrentToPosition(-1);
-            FailedCommits.MoveCurrentToPosition(-1);
+            FailureCommits.MoveCurrentToPosition(-1);
         }
 
 
@@ -134,7 +131,7 @@ namespace BuildMonitor.ViewModels
         #region FailedCommits変更通知プロパティ
         private ListCollectionView _FailedCommits;
 
-        public ListCollectionView FailedCommits
+        public ListCollectionView FailureCommits
         {
             get { return _FailedCommits; }
             set {
@@ -142,7 +139,7 @@ namespace BuildMonitor.ViewModels
                     return;
                 }
                 _FailedCommits = value;
-                RaisePropertyChanged("FailedCommits");
+                RaisePropertyChanged("FailureCommits");
             }
         }
         #endregion
